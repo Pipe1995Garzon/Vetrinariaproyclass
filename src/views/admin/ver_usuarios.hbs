@@ -1,0 +1,41 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card-body">
+                <table class="table table-striped">
+                    <h1>Usuarios</h1> <a href="/admin/creausuario" class="btn btn-info">ir a crear usuario</a>
+                    
+                    <thead>
+                        <tr>
+                            <th scope="col">Nª</th>
+                            <th scope="col">usuario</th>
+                            <th scope="col">nombres</th>
+                            <th scope="col">Contraseña</th>
+                            <th scope="col">edad</th>
+                            <th scope="col">identificacion</th>
+                            <th scope="col">telefono</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each usua}}
+                        <tr>
+                            <th scope="row">{{id}}</th>
+                            <td>{{nombre}}</td>
+                            <td>{{nombres}}</td>
+                            <td>{{pass}}</td>
+                            <td>{{edad}}</td>
+                            <td>{{identificacion}}</td>
+                            <td>{{telefono}}</td>
+                            <td><a href="update/{{id}}" class="btn btn-info">modificar</a></td>
+                            <td><a href="delete/{{id}}" class="btn btn-danger">eliminar</a></td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

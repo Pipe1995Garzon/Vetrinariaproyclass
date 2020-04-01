@@ -1,0 +1,33 @@
+<div class="container p-4">
+    <div class="row">
+      <div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+           <div class="card">
+               <div class="card-bady">
+                   <form action="" method="post">
+                       <div class="form-group">
+                         <a href="/suma/motos" class="btn btn-info">ir a motos</a>
+                         <h2>suma</h2>
+                       </div>
+                     
+                       <div class="form-group">
+                           <label>num1</label>
+                           <input class="form-control" type="number" name="numero1" id="">
+                       </div>
+                       <div class="form-group">
+                           <label>num2</label>
+                           <input class="form-control" type="number" name="numero2" id="">
+                       </div> 
+                       <div class="form-group">
+                           <button type="submit" class="btn btn-warning btn-block">Enviar</button>
+                       </div>
+                   </form>
+                       {{#each v}}
+                        {{v}}
+                       {{/each}}
+               </div>
+           </div> 
+        </div>
+    </div>
+</div>

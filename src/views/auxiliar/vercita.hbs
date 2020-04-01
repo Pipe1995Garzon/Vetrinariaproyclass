@@ -1,0 +1,44 @@
+<div class="container p-4">
+    <div class="col-md-8">
+        <div class="card-body">
+            <table class="table table-striped">
+                <h1>Citas</h1>
+                <thead>
+                    <tr>
+                        <th scope="col">N</th>
+                        <th scope="col">CC</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Telefono</th>
+                        <th scope="col">Mascota</th>
+                        <th scope="col">descripcion</th>
+                        <th scope="col">fecha</th>
+                        <th scope="col">Tipo de cita</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">hora</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each usua}}
+                    <tr>
+                        <th scope="row">{{id_citas}}</th>
+                        <td>{{CC}}</td>
+                        <td>{{Nombre}}</td>
+                        <td>{{Telefono}}</td>
+                        <td>{{mascota}}</td>
+                        <td>{{descripcion}}</td>
+                        <td>{{fecha}}</td>
+                        <td>{{tipo}}</td>
+                        <td>{{estado}}</td>
+                        <td>{{hora}}</td>
+                        <td><a href="cancelarcita/{{id_citas}}" class="btn btn-danger">cancelar cita o meodifica cita</a></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>

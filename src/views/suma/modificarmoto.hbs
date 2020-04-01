@@ -1,0 +1,65 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-md-4 mx-auto">
+                    <div class="card">
+                        <div class="card-bady">
+                            <form action="" method="post">
+                                <div class="form-group">
+                                    {{#each moticos}}
+                                    <h2>modificar-Registro-de motos</h2>
+                                    <h1>motos</h1> <a href="/suma/motos" class="btn btn-info">ir a suma</a>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" class="form-control" type="text" name="" id="" value="{{id}}"
+                                        >
+                                    <input class="form-control" class="form-control" type="text" name="" id="" value="{{marca}}"
+                                       >
+                                    <input type="radio" name="marca" value="AKT">AKT
+                                    <br>
+                                    <input type="radio" name="marca" value="AICO">Aico
+                                    <br>
+                                    <input type="radio" name="marca" value="YAMAHA">Yamaha
+                                    <br>
+                                    <input type="radio" name="marca" value="SUZUKI">Susuki
+                                    <br>
+                                    <input type="radio" name="marca" value="HONDA">Honda
+                                </div>
+                                <div class="form-group">
+                                    <label>linea</label>
+                                    <input class="form-control" class="form-control" type="text" name="linea" id="" value="{{linea}}"
+                                        maxlength="15">
+                                </div>
+                                <div class="form-group">
+                                    <label>Cilindraje</label>
+                                    <input class="form-control" class="form-control" type="text" name="cilindraje" id="" value="{{cilindraje}}"
+                                        maxlength="15">
+                                </div>
+                                <div class="form-group">
+                                    <label>Matricula</label>
+                                    <input type="text" name="matricula" class="form-control" id="" value="{{matricula}}"
+                                         maxlength="40">
+                                </div>
+                                 <div class="form-group">
+                                    <label>fecha de matricula</label>
+                                    <input class="form-control" class="form-control" type="text" name="" id="" value="{{fechamatricula}}"
+                                      >
+                                    <input type="date" name="fechamatricula" class="form-control" id=""
+                                         maxlength="40">
+                                </div>
+                                <div class="form-group">
+                                    <label>placa</label>
+                                    <input type="text" class="form-control" name="placa" id="" value="{{placa}}"
+                                        >
+                                </div>
+                                {{/each}}
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-warning btn-block">Modificar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

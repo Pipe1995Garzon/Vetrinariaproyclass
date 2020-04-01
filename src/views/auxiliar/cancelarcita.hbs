@@ -1,0 +1,43 @@
+<div class="container p-4">
+    <div class="row">
+      <div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+           <div class="card">
+               <div class="card-bady">
+                   <form action="" method="post">
+                       <div class="form-group">
+                         <h2>Modifica citas</h2>
+                         <a href="/auxiliar/vercitas" class="btn btn-info">Volver</a>
+                       </div>
+                       {{#each datacitas}} 
+                         <div class="form-group">
+                           <label>datos principales de la cita</label>
+                           <input class="form-control" type="text" value="{{id_citas}}" name="id" id="">
+                           <h2>la mascota</h2>
+                           <input class="form-control" type="text" value="{{mascota}}" name="mascota" id="">
+                           <h2>descripcion</h2>
+                           <input class="form-control" type="text" value="{{descripcion}}" name="descripcion" id="">
+                           <h2>fecha</h2>
+                           
+                           <input class="form-control" type="text" value="{{fecha}}" name="factual" id="">
+                           <input class="form-control" type="date" value="{{fecha}}" name="fecha" id="" required>
+                           <h2>hora</h2>
+                           <input class="form-control" type="time" value="{{hora}}" name="hora" id="">                           
+                       </div>
+                       <div class="form-group">
+                           <input type="radio"  name="estado" value="Activa">Activa
+                            <br>
+                            <input type="radio" name="estado"  value="Cancelada">Cancelada
+                       </div>
+                       {{/each}}
+                       
+                       <div class="form-group">
+                           <button type="submit" class="btn btn-primary btn-block">Modificar</button>
+                       </div>
+                   </form>
+               </div>
+           </div> 
+        </div>
+    </div>
+</div>
