@@ -1,13 +1,15 @@
 <main class="index">
     <header class="masthead d-flex">
         <div class="container text-center my-auto">
-            <h1>Bienvenido a la veterinaria myDogs</h1>
+            {{#each info1}}
+            <h1>{{titulo1}}</h1>
             <h3 class="mb-5">
-                <em>vea nuestros servicios</em>
+                <em>{{titulo2}}</em>
             </h3>
             <a href="#" class="btn btn-primary">
-                vea nuestros servicios
+                {{titulobutton1}}
             </a>
+            {{/each}}
         </div>
     </header>
 </main>

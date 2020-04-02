@@ -2,6 +2,7 @@ const express = require('express');
 const route = express.Router();
 const passport = require('passport');
 const { isLoggedIn, isnotLoggedIn } = require('../lib/auth');
+
 route.get('/registrarusuario', isLoggedIn, (req, res) => {
     //res.send('logo esta funcional')
     res.render('authentication/registrarusuario')

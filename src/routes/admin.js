@@ -2,7 +2,7 @@ const express = require('express');
 const route = express.Router();
 const pool = require('../database');
 const { isLoggedIn } = require('../lib/auth');
-
+//isLoggedIn,
 route.get('/creausuario', isLoggedIn, (req, res) => {
     //res.send('admin crea secretaria sirve sirve')
     res.render('admin/creausuario')
@@ -13,7 +13,7 @@ route.get('/ver_usuarios', isLoggedIn, async(req, res) => {
     res.render('admin/ver_usuarios', { usua })
 })
 
-route.post('/creausuario', isLoggedIn, async(req, res) => {
+route.post('/creausuario', async(req, res) => {
     const { rol_id, nombre, pass, nombres, identificacion, edad, telefono } = req.body;
     const arreglito = {
         rol_id,
