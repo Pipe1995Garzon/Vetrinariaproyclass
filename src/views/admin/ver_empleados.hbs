@@ -21,48 +21,46 @@
 </div>
 <div class="container">
     <center>
-        <h1>Usuarios</h1>
+        <h1>Empleados</h1>
     </center>
     <div class="row">
-        <div class="col-md-6 col-sm-6 col-xs-6" style=" margin-left:150px; margin-top:30px">
+        <div class="col-md-6 col-sm-6 col-xs-6" style=" margin-left:250px; margin-top:30px">
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <a href="/admin/creausuario" class="btn btn-success">Agregar</a>
+                        <a href="/admin/agregar_empleado" class="btn btn-success">Agregar</a>
                     </tr>
                     <tr>
                         <th scope="col">N°</th>
-                        <th scope="col">Usuario</th>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Edad</th>
-                        <th scope="col">Identificacion</th>
-                        <th scope="col">Telefono</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Cedula</th>
+                        <th scope="col">Cargo</th>
                         <th scope="col"></th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    {{#each usua}}
+                    {{#each ConsultaEmpleados}}
                     <tr>
-                        <th scope="row">{{id}}</th>
+                        <th scope="row">{{id_empleados}}</th>
                         <td>{{nombre}}</td>
-                        <td>{{nombres}}</td>
-                        <td>{{edad}}</td>
-                        <td>{{identificacion}}</td>
-                        <td>{{telefono}}</td>
+                        <td>{{apellido}}</td>
+                        <td>{{cedula}}</td>
+                        <td>{{cargo}}</td>
                         <td>
                             <!-- Button trigger modal modificar -->
                             <button class="btn btn-outline-primary" data-toggle="modal"
-                                data-target="#modalModificar{{id}}">Modificar</button>
+                                data-target="#modalModificar{{id_empleados}}">Modificar</button>
                         </td>
                         <td>
                             <!-- Button trigger modal eliminar-->
                             <button class="btn btn-outline-danger" data-toggle="modal"
-                                data-target="#modalEliminar{{id}}">Eliminar</button>
+                                data-target="#modalEliminar{{id_empleados}}">Eliminar</button>
                         </td>
                     </tr>
                     <!-- Modal Modificar-->
-                    <div class="modal fade" id="modalModificar{{id}}" tabindex="-1" role="dialog"
+                    <div class="modal fade" id="modalModificar{{id_empleados}}" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -73,17 +71,17 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    ¿Esta seguro que desea modificar al usuario?
+                                    ¿Esta seguro que desea modificar al empleado?
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                    <a href="update/{{id}}" class="btn btn-primary">modificar</a>
+                                    <a href="/admin/modifica_empleado/{{id_empleados}}" class="btn btn-primary">modificar</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- Modal Eliminar-->
-                    <div class="modal fade" id="modalEliminar{{id}}" tabindex="-1" role="dialog"
+                    <div class="modal fade" id="modalEliminar{{id_empleados}}" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -94,11 +92,11 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    ¿Esta seguro que desea eliminar al usuario?
+                                    ¿Esta seguro que desea eliminar al empleado?
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                    <a href="delete/{{id}}" class="btn btn-danger">Eliminar</a>
+                                    <a href="eliminar_empleado/{{id_empleados}}" class="btn btn-danger">Eliminar</a>
                                 </div>
                             </div>
                         </div>
