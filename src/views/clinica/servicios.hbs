@@ -1,0 +1,93 @@
+<div class="container">
+    <center>
+        <h2>Servicios de Clínica y Hospitalización Veterinaria</h3>
+    </center>
+    <div class="card bg-dark text-white">
+        <img class="card-img" src="/images/clinica.jpg" alt="Card image">
+    </div>
+    <br>
+    <tr>
+        <a href="/clinica/agregar_servicio" class="btn btn-success"><img src="/images/agregar.jpg" width="30"
+                height="30"> Agregar</a>
+    </tr>
+    {{#each mostrarServicios}}
+    <div class="card">
+        <h4 class="card-header"><img src="/images/icono2.png" width="30" height="30"> {{servicio}}</h4>
+        <div class="card-body">
+            <h5 class="card-title"></h5>
+            <p class="card-text">{{descripcion}}</p>
+            <a href="" data-toggle="modal" data-target="#ModalEditar{{id_servicios}}"
+                class="btn btn-info">
+                <img src="/images/editar.jpg" width="30" height="30">
+            </a>
+            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminar{{id_servicios}}"><img
+                    src="/images/eliminar.jpg" width="30" height="30"></a>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="ModalEditar{{id_servicios}}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modificar</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/clinica/modificar_servicios/{{id_servicios}}" method="post">
+                            <div class="form-group">
+                                <input type="hidden" value="{{id_servicios}}" class="form-control" id="id">
+                            </div>
+                            <div class="form-group">
+                                <label for="servicio">Servicio</label>
+                                <input type="text" name="servicio" value="{{servicio}}" class="form-control" id="id">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Descripcion:</label>
+                                <textarea class="form-control" name="descripcion" id="message-text" rows="8"
+                                    cols="10">{{descripcion}}</textarea>
+                            </div>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary">Editar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Eliminar-->
+        <div class="modal fade" id="modalEliminar{{id_servicios}}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Confirmar eliminación</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ¿Esta seguro que desea eliminar?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <a href="eliminar/{{id_servicios}}" class="btn btn-danger">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    {{/each}}
+</div>
+<br>
+<div class="card bg-light">
+    <div class="card-body">
+        <center>
+            URGENCIAS VETERINARIAS 24 HRS: 5360-3311 Y 5240-0404 | CONTACTO | MAPA DEL SITIO | AVISO DE PRIVACIDAD |
+            Síguenos en: <img src="/images/face.jpg" width="30" height="30"> <img src="/images/instagram.jpg" width="30"
+                height="30"> <img src="/images/twiter.jpg" width="30" height="30">
+
+        </center>
+    </div>
+</div>

@@ -59,6 +59,7 @@ app.use(require('./routes'));
 //segunda part
 app.use(require('./routes/authentication'));
 app.use('/links', require('./routes/links'));
+app.use('/clinica', require('./routes/clinica'));
 app.use('/admin', require('./routes/admin'));
 app.use('/veterinario', require('./routes/veterinario'));
 app.use('/auxiliar', require('./routes/auxiliar'));

@@ -1,0 +1,153 @@
+<div class="container">
+    <h1>Nosotros</h1>
+    {{#each mostrarTodo}}
+    <div class="card bg-dark text-white">
+        <img class="card-img" src="{{imagen}}" alt="Card image">
+    </div>
+    <br>
+    <div class="card">
+        <h5 class="card-header">Misión</h5>
+        <div class="card-body">
+            <p class="card-text">{{mision}}</p>
+            <a href="" data-toggle="modal" data-target="#ModalMision{{id_nosotros}}" class="btn btn-info"><img src="/images/editar.jpg" width="30" height="30"></a>
+        </div>
+         <!-- Modal modificar mision-->
+        <div class="modal fade" id="ModalMision{{id_nosotros}}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modificar</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/clinica/modificar_mision/{{id_nosotros}}" method="post">
+                            <div class="form-group">
+                                <input type="hidden" value="{{id_nosotros}}" class="form-control" id="id">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Misión</label>
+                                <textarea class="form-control" name="vision" id="message-text" rows="5"
+                                    cols="10">{{mision}}</textarea>
+                            </div>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-info">Editar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="card">
+        <h5 class="card-header">Visión</h5>
+        <div class="card-body">
+            <p class="card-text">{{vision}}</p>
+            <a href="" data-toggle="modal" data-target="#ModalModificar{{id_nosotros}}" class="btn btn-info"><img src="/images/editar.jpg" width="30"
+                    height="30"></a>
+        </div>
+        <!-- Modal modificar vision-->
+        <div class="modal fade" id="ModalModificar{{id_nosotros}}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modificar</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/clinica/modificar_vision/{{id_nosotros}}" method="post">
+                            <div class="form-group">
+                                <input type="hidden" value="{{id_nosotros}}" class="form-control" id="id">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Visión</label>
+                                <textarea class="form-control" name="vision" id="message-text" rows="5"
+                                    cols="10">{{vision}}</textarea>
+                            </div>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-info">Editar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <p>{{informacion}}</p>
+            <a href="agregar_informacion/{{id_nosotros}}" class="btn btn-success"><img src="/images/agregar.jpg"
+                    width="30" height="30"></a>
+            <a href="" data-toggle="modal" data-target="#ModalEditar{{id_nosotros}}"
+                class="btn btn-info"><img src="/images/editar.jpg" width="30" height="30"></a>
+            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminar{{id_nosotros}}"><img
+                    src="/images/eliminar.jpg" width="30" height="30"></a>
+        </div>
+        <!-- Modal modificar-->
+        <div class="modal fade" id="ModalEditar{{id_nosotros}}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modificar</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/clinica/update/{{id_nosotros}}" method="post">
+                            <div class="form-group">
+                                <input type="hidden" value="{{id_nosotros}}" class="form-control" id="id">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Informacion:</label>
+                                <textarea class="form-control" name="informacion" id="message-text" rows="3"
+                                    cols="10">{{informacion}}</textarea>
+                            </div>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary">Editar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Eliminar-->
+        <div class="modal fade" id="modalEliminar{{id_nosotros}}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Confirmar eliminación</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ¿Esta seguro que desea eliminar?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <a href="delete/{{id_nosotros}}" class="btn btn-danger">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
+<br>
+<div class="card bg-light">
+    <div class="card-body">
+        <center>
+            URGENCIAS VETERINARIAS 24 HRS: 5360-3311 Y 5240-0404 | CONTACTO | MAPA DEL SITIO | AVISO DE PRIVACIDAD |
+            Síguenos en: <img src="/images/face.jpg" width="30" height="30"> <img src="/images/instagram.jpg" width="30"
+                height="30"> <img src="/images/twiter.jpg" width="30" height="30">
+
+        </center>
+    </div>
+</div>
