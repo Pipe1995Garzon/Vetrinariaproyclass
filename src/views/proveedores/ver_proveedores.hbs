@@ -1,0 +1,124 @@
+<div class="container">
+    <center>
+        <h1>Proveedores</h1>
+    </center>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <a href="" class="btn btn-success" data-toggle="modal" data-target="#ModalAgregar"><img
+                        src="/images/agregar.jpg" width="30" height="30">
+                    Agregar</a>
+            </tr>
+            <!-- Modal -->
+            <div class="modal fade" id="ModalAgregar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form action="/proveedores/agregar" method="POST">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Agregar proveedor</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="proveedor">Nombre</label>
+                                    <input type="text" class="form-control" id="proveedor" name="proveedor"
+                                        aria-describedby="emailHelp" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nit">Nit</label>
+                                    <input type="number" class="form-control" id="nit" name="nit" required>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-success">Registrar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <tr>
+                <th scope="col">N°</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Nit</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each mostrarTodo}}
+            <tr>
+                <th scope="row">{{id_proveedor}}</th>
+                <td>{{proveedor}}</td>
+                <td>{{nit}}</td>
+                <td> <a href="" data-toggle="modal" data-target="#ModalEditar{{id_proveedor}}" class="btn btn-info">
+                        <img src="/images/editar.jpg" width="30" height="30">
+                    </a>
+                </td>
+                <td>
+                    <a href="#" class="btn btn-danger" data-toggle="modal"
+                        data-target="#modalEliminar{{id_proveedor}}"><img src="/images/eliminar.jpg" width="30"
+                            height="30"></a>
+                </td>
+            </tr>
+            <!-- Modal modificar-->
+            <div class="modal fade" id="ModalEditar{{id_proveedor}}" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <form action="/proveedores/modificar/{{id_proveedor}}" method="POST">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modificar</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <input name="id_productos" type="hidden" value="{{id_proveedor}}">
+                                 <div class="form-group">
+                                    <label for="proveedor">Nombre</label>
+                                    <input type="text" class="form-control" id="proveedor" name="proveedor" value="{{proveedor}}"
+                                        aria-describedby="emailHelp">
+                                </div>
+                                <div class="form-group">
+                                    <label for="nit">Nit</label>
+                                    <input type="number" class="form-control" id="nit" name="nit" value="{{nit}}">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-info">Modificar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Modal Eliminar-->
+            <div class="modal fade" id="modalEliminar{{id_proveedor}}" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Confirmar eliminación</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            ¿Esta seguro que desea eliminar el proveedor, {{proveedor}}?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <a href="eliminar/{{id_proveedor}}" class="btn btn-danger">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

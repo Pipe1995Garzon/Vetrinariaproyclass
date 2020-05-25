@@ -10,7 +10,7 @@ route.get('/crearcita', (req, res) => {
     res.render('auxiliar/crear_cita')
 })
 
-route.get('/vercitas', async(req, res) => {
+route.get('/vercita', async(req, res) => {
     const usua = await pool.query('SELECT cli.Nombre, cli.Apellido,cli.CC,cli.Telefono,ci.mascota,ci.descripcion,ci.fecha,ci.tipo,ci.id_citas,ci.estado,ci.hora FROM clientes cli, citas ci WHERE cli.id_cliente=ci.id_cliente')
     res.render('auxiliar/vercita', { usua })
 })
@@ -52,7 +52,14 @@ route.post('/cancelarcita/:id', async(req, res) => {
     //console.log('esto es una prueba de que me esta llegando');
     //console.log('', [id], ',', [mascota], ',', [descripcion], ',', [fecha], ',', [hora], ',', [estado]);
     await pool.query("UPDATE citas SET mascota='" + [mascota] + "',descripcion='" + [descripcion] + "',fecha='" + [fecha] + "',hora='" + [hora] + "',estado='" + [estado] + "'WHERE id_citas='" + [id] + "'");
-    req.flash('correcto', ' la cita de modifico con exito socio')
-    res.redirect('/auxiliar/vercitas');
+    req.flash('correcto', ' la cita se modifico con exito socio')
+    res.redirect('/auxiliar/vercita');
 })
+
+route.get('/delete_cita/:id_citas', async(req, res) => {
+    const { id_citas } = req.params;
+    const eliminarcita = await pool.query('delete from citas where id_citas=?', [id_citas]);
+    req.flash('correcto', 'se ha eliminado la cita');
+    res.redirect('/auxiliar/vercita');
+});
 module.exports = route;

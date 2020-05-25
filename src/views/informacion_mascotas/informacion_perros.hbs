@@ -1,0 +1,121 @@
+<div class="container">
+    <center>
+        <h1>¿Sabías qué...</h1>
+    </center>
+    <div class="card bg-dark text-white">
+        <img class="card-img" src="/images/perros.jpg" alt="Card image">
+    </div>
+    <br>
+    <tr>
+        <a href="" class="btn btn-success" data-toggle="modal" data-target="#ModalAgregar"><img src="/images/agregar.jpg" width="30" height="30">
+            Agregar</a>
+         <!-- Modal agregar-->
+        <div class="modal fade" id="ModalAgregar" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Agregar Artículos</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/informacion/add" method="post">
+                            <div>
+                                <label for="fecha_perros">Fecha</label>
+                                <input type="date" class="form-control" name="fecha_perros" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">informacion de interes</label>
+                                <textarea class="form-control" name="tema" id="message-text" rows="8"
+                                    cols="10"></textarea>
+                            </div>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-success">Agregar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </tr>
+    {{#each mostrarTodo}}
+    <div class="card">
+        <div class="card-body">
+            <small class="form-text text-muted">{{fecha_perros}}</small>
+            <p class="card-text">{{tema}}</p>
+            <a href="" data-toggle="modal" data-target="#ModalEditar{{id_perros}}"
+                class="btn btn-info">
+                <img src="/images/editar.jpg" width="30" height="30">
+            </a>
+            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminar{{id_perros}}"><img
+                    src="/images/eliminar.jpg" width="30" height="30"></a>
+        </div>
+        <!-- Modal modificar-->
+        <div class="modal fade" id="ModalEditar{{id_perros}}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modificar</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/informacion/modificar_tema/{{id_perros}}" method="post">
+                            <div class="form-group">
+                                <input type="hidden" value="{{id_perros}}" class="form-control" id="id">
+                            </div>
+                            <div>
+                                <label for="fecha_perros">Fecha</label>
+                                <input type="date" class="form-control" name="fecha_perros" value="{{fecha_perros}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">informacion de interes:</label>
+                                <textarea class="form-control" name="tema" id="message-text" rows="8"
+                                    cols="10">{{tema}}</textarea>
+                            </div>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary">Editar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Eliminar-->
+        <div class="modal fade" id="modalEliminar{{id_perros}}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Confirmar eliminación</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ¿Esta seguro que desea eliminar?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <a href="eliminar_tema/{{id_perros}}" class="btn btn-danger">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    {{/each}}
+</div>
+<br>
+<div class="card bg-light">
+    <div class="card-body">
+        <center>
+            URGENCIAS VETERINARIAS 24 HRS: 5360-3311 Y 5240-0404 | CONTACTO | MAPA DEL SITIO | AVISO DE PRIVACIDAD |
+            Síguenos en: <img src="/images/face.jpg" width="30" height="30"> <img src="/images/instagram.jpg" width="30"
+                height="30"> <img src="/images/twiter.jpg" width="30" height="30">
+
+        </center>
+    </div>
+</div>

@@ -104,7 +104,7 @@ route.get('/eliminar/:id_servicios', isLoggedIn, async(req, res) => {
     res.redirect('/clinica/servicios');
 });
 
-route.get('/servicios/:id_servicios', isLoggedIn, async(req, res) => {
+route.get('/modificar_servicios/:id_servicios', isLoggedIn, async(req, res) => {
     const { id_servicios } = req.params;
     const mostrarServicio = await pool.query('select * from servicios where id_servicios=?', [id_servicios])
     res.render('clinica/servicios', {mostrarServicio});
@@ -131,12 +131,20 @@ route.get('/agregar_instalacion', isLoggedIn, (req, res) => {
 
 route.post('/agregar_instalacion', async(req, res) => {
     const {instalacion} = req.body;
-    const imagen = req.files;
-    const AgregarTodo = {imagen, instalacion};
+    const imagen = req.files.filename;
+    const AgregarTodo = {instalacion, imagen};
+    console.log(req.files.filename);
     await pool.query('insert into instalaciones set ?', [AgregarTodo]);
     req.flash('correcto', 'Guardado con exito');
     res.redirect('/clinica/instalaciones');
 }); 
+
+//const storage = multer.diskStorage({
+    //destination: path.join(__dirname, '../public/images/uploads'), 
+    //filename: (req,file,cb)=>{
+        //cb(null, file.fieldname + '-' + Date.now());
+    //}
+//});
 
 route.get('/eliminar_instalaciones/:id_instalaciones', isLoggedIn, async(req, res) => {
     const { id_instalaciones } = req.params;
@@ -145,21 +153,20 @@ route.get('/eliminar_instalaciones/:id_instalaciones', isLoggedIn, async(req, re
     res.redirect('/clinica/instalaciones');
 });
 
+
 route.get('/modificar_instalacion/:id_instalaciones', isLoggedIn, async(req, res) => {
     const { id_instalaciones } = req.params;
     const mostrarinstalaciones = await pool.query('select * from instalaciones where id_instalaciones=?', [id_instalaciones])
     res.render('clinica/instalaciones', {mostrarinstalaciones});
 });
 
-route.post('/modificar_instalaciones/:id_instalaciones', isLoggedIn, async(req, res) => {
+route.post('/modificar_instalacion/:id_instalaciones', isLoggedIn, async(req, res) => {
     const { id_instalaciones } = req.params;
     const {instalacion, imagen} = req.body;
     const modificarinstalaciones = {instalacion, imagen}
-    await pool.query("UPDATE instalaciones SET instalacione ='" + [instalacion] +"', imagen='" + [imagen] + "' WHERE id_instalaciones = '" + [id_instalaciones] + "'");
+    await pool.query("UPDATE instalaciones SET instalacion ='" + [instalacion] +"', imagen='" + [imagen] + "' WHERE id_instalaciones = '" + [id_instalaciones] + "'");
     req.flash('correcto', 'La informacion fue guardada con exito');
     res.redirect('/clinica/instalaciones');
 });
-
-
 
 module.exports = route;

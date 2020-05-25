@@ -1,0 +1,169 @@
+<div class="container">
+    <center>
+        <h1>productos</h1>
+    </center>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <a href="" class="btn btn-success" data-toggle="modal" data-target="#ModalAgregar"><img
+                        src="/images/agregar.jpg" width="30" height="30">
+                    Agregar</a>
+            </tr>
+            <!-- Modal agregar productos-->
+            <div class="modal fade" id="ModalAgregar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <form action="/productos/agregar" method="POST">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Registrar productos</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="nombreproducto">Nombre</label>
+                                        <input type="text" class="form-control" name="nombreProducto"
+                                            id="nombreproducto" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="codigo">Codigo</label>
+                                        <input type="number" class="form-control" name="codigo" id="codigo" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="precio">Precio</label>
+                                    <input type="number" class="form-control" id="precio" name="precio" required>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="categoria">Categoria</label>
+                                        <select id="categoria" name="categoria" class="form-control">
+                                            <option selected>Seleccionar...</option>
+                                            <option>Accesorios</option>
+                                            <option>Aseo</option>
+                                            <option>Vacunas</option>
+                                            <option>Cirugía</option>
+                                            <option>Alimentos</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="date">Vencimiento</label>
+                                        <input type="date" class="form-control" name="fecha_vencimiento" id="date">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-success">Registrar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <tr>
+                <th scope="col">N°</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Codigo</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Vence</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each mostrarTodo}}
+            <tr>
+                <th scope="row">{{id_productos}}</th>
+                <td>{{nombreProducto}}</td>
+                <td>{{codigo}}</td>
+                <td>{{precio}}</td>
+                <td>{{categoria}}</td>
+                <td>{{fecha_vencimiento}}</td>
+                <td>
+                    <a href="" data-toggle="modal" data-target="#ModalEditar{{id_productos}}" class="btn btn-info">
+                        <img src="/images/editar.jpg" width="30" height="30">
+                    </a>
+                </td>
+                <td>
+                    <a href="#" class="btn btn-danger" data-toggle="modal"
+                        data-target="#modalEliminar{{id_productos}}"><img src="/images/eliminar.jpg" width="30"
+                            height="30"></a>
+                </td>
+            </tr>
+            <!-- Modal modificar-->
+            <div class="modal fade" id="ModalEditar{{id_productos}}" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <form action="/productos/modificar/{{id_productos}}" method="POST">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modificar</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <input name="id_productos" type="hidden" value="{{id_productos}}">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="nombreproducto">Nombre</label>
+                                        <input type="text" class="form-control" name="nombreProducto"
+                                            id="nombreproducto" value="{{nombreProducto}}">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="codigo">Codigo</label>
+                                        <input type="number" class="form-control" name="codigo" id="codigo"
+                                            value="{{codigo}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="precio">Precio</label>
+                                    <input type="number" class="form-control" id="precio" name="precio"
+                                        value="{{precio}}">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="categoria">Categoria</label>
+                                        <input type="text" class="form-control" id="categoria" name="categoria"
+                                            value="{{categoria}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-info">Modificar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Modal Eliminar-->
+            <div class="modal fade" id="modalEliminar{{id_productos}}" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Confirmar eliminación</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            ¿Esta seguro que desea eliminar el producto, {{nombreProducto}}?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <a href="eliminar/{{id_productos}}" class="btn btn-danger">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

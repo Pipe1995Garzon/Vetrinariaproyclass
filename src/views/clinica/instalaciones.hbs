@@ -62,7 +62,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="" method="post">
+                            <form action="/clinica/modificar_instalacion/{{id_instalaciones}}" method="post">
                                 <div class="form-group">
                                     <input type="hidden" value="{{id_instalaciones}}" class="form-control" id="id">
                                 </div>
@@ -70,6 +70,10 @@
                                     <label for="instalacion">instalacion</label>
                                     <input type="text" name="instalacion" value="{{instalacion}}"
                                         class="form-control" id="id">
+                                </div>
+                                <div class="form-group">
+                                    <label for="imagen">imagen</label>
+                                    <input type="file"  class="form-control" name="imagen" value="{{imagen}}">
                                 </div>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                 <button type="submit" class="btn btn-primary">Editar</button>
